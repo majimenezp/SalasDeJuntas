@@ -1,0 +1,22 @@
+﻿@charset "UTF-8";
+
+body {
+    padding-top: 60px;
+}
+
+.panelSala{
+    background-color:#eee;
+    margin: 0 10px 10px 0;
+    padding:0 10px 15px 10px;
+    min-height:180px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.panelAbajo{
+    position: absolute; bottom: 10px; right: 10px;
+}
+
+a {
+    color:inherit;
+}
