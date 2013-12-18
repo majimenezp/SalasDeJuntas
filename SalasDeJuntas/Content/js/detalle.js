@@ -7,19 +7,64 @@ moment.lang("es");
 var modelos = {};
 var vistas = {};
 var App = null;
+var colorActual=0;
+var listaColores = [
+    "rgba(255, 92, 0, 0.75)",
+    "rgba(139, 234, 0, 0.75)",
+    "rgba(8, 111, 161, 0.75)",
+    "rgba(255, 133, 64, 0.75)",
+    "rgba(170, 245, 61, 0.75)",
+    "rgba(60, 160, 208, 0.75)",
+    "rgba(255, 165, 115, 0.75)",
+    "rgba(190, 245, 110, 0.75)",
+    "rgba(99, 173, 208, 0.75)",
+    "rgba(166, 60, 0, 0.75)",
+    "rgba(90, 152, 0, 0.75)",
+    "rgba(3, 71, 105, 0.75)"
+];
 
 window.Handlebars.registerHelper('setPos', function (value, options) {
-    var pos1 = $("#" + value.HoraInicioJs.replace(/:/g, "")).offset();
-    var pos2 = $("#ListaHoras").offset();
-    console.log(pos1);
-    //var $el = $('').html(options.fn(this));
-    //var cambios = $el.find('[value=' + value + ']').attr({ 'selected': 'selected' });
-    //if (cambios.length == 0) {
-    //    $el.find(":first").attr({ 'selected': 'selected' });
-    //}
-    return "<div class='cajaJunta' style='top:" + (pos1.top-pos2.top) + "px;'>" + options.fn(this) + "</div>";
+    var posInicio = $("#" + ObtenerRenglonHora(value.HoraInicioJs)).offset();
+    var posFin = $("#" + ObtenerRenglonHora(value.HoraFinJs)).offset();
+    var posCon = $("#ListaHoras").offset();
+   
+    return "<div class='cajaJunta' style='top:" + (posInicio.top - posCon.top) +
+        "px;height:" + (posFin.top - posInicio.top) + "px;background-color:"+ ObtenerColor()+"'>" + options.fn(this) + "</div>";
 });
 
+function ObtenerRenglonHora(hora) {
+    var idHora = hora.replace(/:/g, "");
+    var parteHora = parseInt(idHora.substring(0, 2));
+    var parteMinutos = parseInt(idHora.substring(2));
+    if (parteMinutos != 30 || parteMinutos != 0) {
+        if (parteMinutos<21) {
+            parteMinutos = 0;
+        }
+        if (parteMinutos > 20 && parteMinutos<45) {
+            parteMinutos = 30;
+        }
+        if (parteMinutos >= 45 && parteMinutos < 60) {
+            parteHora += 1;
+            parteMinutos = 0;
+        }
+        return pad(parteHora, 2) + pad(parteMinutos, 2);
+    }
+}
+
+function ObtenerColor() {
+    var color = listaColores[colorActual]
+    colorActual += 1;
+    if (colorActual == listaColores.length) {
+        colorActual = 0;
+    }
+    return color;
+}
+
+function pad(num, size) {
+    var s = num + "";
+    while (s.length < size) s = "0" + s;
+    return s;
+}
 
 function InicioBackbone() {
     modelos.Junta = Backbone.RelationalModel.extend({
@@ -71,6 +116,7 @@ function InicioBackbone() {
             "dias/:Id/:IdSala": "mostrar_dia",
         },
         mostrar_dia: function (Id, IdSala) {
+            colorActual = 0;
             var diaActual = modelos.Dia.findOrCreate({ Id: Id});
             var vistaJunta = new vistas.Junta({model: diaActual });
             //diaActual.get("juntas");

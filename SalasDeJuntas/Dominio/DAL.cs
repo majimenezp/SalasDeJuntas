@@ -35,7 +35,5 @@ namespace Dominio
         }
 
         public static DAL Instance { get { return instance.Value; } }
-
-        
     }
 }

@@ -2,42 +2,48 @@
 @{
     Layout = "Views/Shared/Layout.cshtml";
 }
-
-<h2>Fecha: @DateTime.Now.ToString("dd/MMMM/yyyy")</h2>
-@foreach (var reg in Model.Lista)
-{
-    <h3><span class="glyphicon glyphicon-home"></span>@reg.NombreUbicacion</h3>
-    <div class="row">
-        @foreach (var sala in reg.Salas)
+<div class="row">
+    <h2>Fecha: @DateTime.Now.ToString("dd/MMMM/yyyy")</h2>
+</div>
+<div class="row">
+    <a href="/Juntas/nueva" class="btn btn-primary">Nueva Junta</a>
+</div>
+<div class="row">
+    @foreach (var reg in Model.Lista)
+    {
+        <h3><span class="glyphicon glyphicon-home"></span>@reg.NombreUbicacion</h3>
+        <div class="row">
+            @foreach (var sala in reg.Salas)
         {
-            <div class="col-xs-6 col-sm-3 panelSala" id="@sala.Id">
-                <p>
-                    <strong>Sala:</strong>
-                    <a href="@Url.Content("~/Salas/"+sala.Id)">@sala.Nombre</a>
-                </p>
-                <strong>Proxima junta:</strong>
-                <ul class="list-group">
-                    @foreach (var junta in sala.Proximas)
+        <div class="col-xs-6 col-sm-3 panelSala" id="@sala.Id">
+            <p>
+                <strong>Sala:</strong>
+                <a href="@Url.Content("~/Salas/"+sala.Id)">@sala.Nombre</a>
+            </p>
+            <strong>Proxima junta:</strong>
+            <ul class="list-group">
+                @foreach (var junta in sala.Proximas)
                     {
-                        <li class="list-group-item">
-                            <p>@junta.Descripcion</p>
-                            @junta.Hora()
-                        </li>
+                    <li class="list-group-item">
+                        <p>@junta.Descripcion</p>
+                        @junta.Hora()
+                    </li>
 
                     }
-                    @if (sala.Proximas.Count == 0)
+                @if (sala.Proximas.Count == 0)
                     {
-                        <li class="list-group-item">No hay juntas para el dia de hoy</li>
+                    <li class="list-group-item">No hay juntas para el dia de hoy</li>
                     }
-                </ul>
-                <div class="panelAbajo">
-                    <a href="@Url.Content("~/Salas/"+sala.Id)" class="pull-right">
-                        Ver juntas
-                        <span class="glyphicon glyphicon-circle-arrow-right"></span>
-                    </a>
-                </div>
+            </ul>
+            <div class="panelAbajo">
+                <a href="@Url.Content("~/Salas/"+sala.Id)" class="pull-right">
+                    Ver juntas
+                    <span class="glyphicon glyphicon-circle-arrow-right"></span>
+                </a>
             </div>
+        </div>
         }
-    </div>
-    <hr />
-}
+        </div>
+        <hr />
+    }
+</div>

@@ -19,9 +19,12 @@
     <script type="text/x-handlebars-template" id="TemplateCajaJunta">
         {{#each juntas}}
         {{#setPos this}}
-            <strong>{{Descripcion}}</strong>
-            <p>{{Comentario}}</p>
-            <span>{{HoraInicioJs}}- {{HoraFinJs}}</span>
+        <strong><span>{{HoraInicioJs}}- {{HoraFinJs}}</span></strong>
+        <br />
+        <strong>
+            <a href="@Url.Content("~/Juntas/"){{Id}}">{{Descripcion}}</a>
+            
+        </strong>
         {{/setPos}}
         {{/each}}
     </script>
@@ -44,82 +47,82 @@
     <div id="ListaHoras" class="col-xs-12 col-md-8">
         <p class="FechaActual"></p>
         <ul class="listaHoras">
-            <li id="0000">
+            <li id="0000" class="hidden">
                 <div>
                     <span class="hora">00:00</span>
                 </div>
             </li>
-            <li id="0030">
+            <li id="0030" class="hidden">
                 <div>
                     <span class="hora">
                         00:30
                     </span>
                 </div>
             </li>
-            <li id="0100">
+            <li id="0100" class="hidden">
                 <div>
                     <span class="hora">
                         01:00
                     </span>
                 </div>
             </li>
-            <li id="0130">
+            <li id="0130" class="hidden">
                 <div>
                     <span class="hora">
                         01:30
                     </span>
                 </div>
             </li>
-            <li id="0200">
+            <li id="0200" class="hidden">
                 <div>
                     <span class="hora">
                         02:00
                     </span>
                 </div>
             </li>
-            <li id="0230">
+            <li id="0230" class="hidden">
                 <div>
                     <span class="hora">
                         02:30
                     </span>
                 </div>
             </li>
-            <li id="0300">
+            <li id="0300" class="hidden">
                 <div>
                     <span class="hora">
                         03:00
                     </span>
                 </div>
             </li>
-            <li id="0330">
+            <li id="0330" class="hidden">
                 <div>
                     <span class="hora">
                         03:30
                     </span>
                 </div>
             </li>
-            <li id="0400">
+            <li id="0400" class="hidden">
                 <div>
                     <span class="hora">
                         04:00
                     </span>
                 </div>
             </li>
-            <li id="0430">
+            <li id="0430" class="hidden">
                 <div>
                     <span class="hora">
                         04:30
                     </span>
                 </div>
             </li>
-            <li id="0500">
+            <li id="0500" class="hidden">
                 <div>
                     <span class="hora">
                         05:00
                     </span>
                 </div>
             </li>
-            <li id="0530">
+            <li id="0530" class="hidden">
                 <div>
                     <span class="hora">
                         05:30

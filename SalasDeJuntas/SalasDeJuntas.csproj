@@ -95,6 +95,7 @@
   <ItemGroup>
     <Compile Include="Models\Dia.cs" />
     <Compile Include="Models\ListaSalas.cs" />
+    <Compile Include="Modules\Juntas.cs" />
     <Compile Include="Modules\Principal.cs" />
     <Compile Include="Modules\RestApi.cs" />
     <Compile Include="Modules\Salas.cs" />
@@ -110,6 +111,8 @@
     <Content Include="Content\js\libs\jquery-1.10.2.min.map" />
     <Content Include="Views\Salas\Index.cshtml" />
     <Content Include="Views\Salas\Detalle.cshtml" />
+    <Content Include="Views\Juntas\Detalle.cshtml" />
+    <Content Include="Views\Juntas\Nueva.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,11 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+@{
+    Layout = "Views/Shared/Layout.cshtml";
+}
+
+<h1>@Model.Descripcion</h1>
+<h3>@Model.Sala.Nombre - @Model.Sala.Ubicacion.Nombre</h3>
+<h3>@Model.Fecha.ToString("dd/MM/yyyy") @Model.HoraInicio.ToString(@"hh\:mm") - @Model.HoraFin.ToString(@"hh\:mm")</h3>
+<blockquote>
+    <p>@Model.Comentario</p>
+</blockquote>

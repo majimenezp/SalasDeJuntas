@@ -55,6 +55,21 @@ namespace Dominio
             return resultado;
         }
 
+        public Junta ObtenerJunta(int Id)
+        {
+            Junta resultado = null;
+            using (var sesion = this.currentSession.OpenSession())
+            {
+                using (var trans = sesion.BeginTransaction())
+                {
+                    resultado = sesion.Get<Junta>(Id);
+                    NHibernateUtil.Initialize(resultado.Sala);
+                    trans.Commit();
+                }
+            }
+            return resultado;
+        }
+
 
     }
 
