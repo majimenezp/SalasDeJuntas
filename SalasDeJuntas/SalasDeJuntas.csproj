@@ -47,9 +47,15 @@
     <Reference Include="Nancy.Hosting.Aspnet">
       <HintPath>packages\Nancy.Hosting.Aspnet.0.21.1\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
     </Reference>
+    <Reference Include="Nancy.Serialization.ServiceStack">
+      <HintPath>packages\Nancy.Serialization.ServiceStack.0.21.1\lib\net40\Nancy.Serialization.ServiceStack.dll</HintPath>
+    </Reference>
     <Reference Include="Nancy.ViewEngines.Razor, Version=0.21.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Nancy.Viewengines.Razor.0.21.1\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>packages\ServiceStack.Text.3.9.71\lib\net35\ServiceStack.Text.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -67,18 +73,30 @@
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\js\detalle.js" />
+    <Content Include="Content\js\libs\backbone-min.js" />
+    <Content Include="Content\js\libs\backbone-relational.js" />
+    <Content Include="Content\js\libs\backbone.js" />
     <Content Include="Content\js\libs\bootstrap.js" />
     <Content Include="Content\js\libs\bootstrap.min.js" />
+    <Content Include="Content\js\libs\backbone-min.map" />
     <None Include="Content\js\libs\jquery-1.10.2-vsdoc.js" />
+    <Content Include="Content\js\libs\handlebars.js" />
+    <Content Include="Content\js\libs\handlebars.runtime-v1.1.2.js" />
     <Content Include="Content\js\libs\jquery-1.10.2.js" />
     <Content Include="Content\js\libs\jquery-1.10.2.min.js" />
+    <Content Include="Content\js\libs\moment-with-langs.min.js" />
+    <Content Include="Content\js\libs\underscore-min.js" />
+    <Content Include="Content\js\libs\underscore.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Dia.cs" />
     <Compile Include="Models\ListaSalas.cs" />
     <Compile Include="Modules\Principal.cs" />
+    <Compile Include="Modules\RestApi.cs" />
     <Compile Include="Modules\Salas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

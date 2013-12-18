@@ -5,12 +5,14 @@ using System.Web;
 using Nancy;
 using Dominio;
 using SalasDeJuntas.Models;
+using ServiceStack.Text;
 namespace SalasDeJuntas.Modules
 {
     public class Principal:NancyModule
     {
         public Principal()
         {
+            JsConfig.DateHandler = JsonDateHandler.ISO8601; 
             Get["/"] = x =>
             {
                 var salas = DAL.Instance.ObtenerSalas();

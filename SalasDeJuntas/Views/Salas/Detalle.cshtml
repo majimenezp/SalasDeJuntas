@@ -2,5 +2,383 @@
 @{
     Layout = "Views/Shared/Layout.cshtml";
 }
+@section Header{
+    <script src="@Url.Content("~/Content/js/libs/underscore.js")"></script>
+    <script src="@Url.Content("~/Content/js/libs/backbone.js")"></script>
+    <script src="@Url.Content("~/Content/js/libs/backbone-relational.js")"></script>
+    <script src="@Url.Content("~/Content/js/libs/handlebars.js")"></script>
 
-Sala
+    <script src="@Url.Content("~/Content/js/libs/moment-with-langs.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/detalle.js")"></script>
+    <script type="text/javascript">
+        var idSala=@Model.Id;
+    </script>
+}
+
+@section templates{
+    <script type="text/x-handlebars-template" id="TemplateCajaJunta">
+        {{#each juntas}}
+        {{#setPos this}}
+            <strong>{{Descripcion}}</strong>
+            <p>{{Comentario}}</p>
+            <span>{{HoraInicioJs}}- {{HoraFinJs}}</span>
+        {{/setPos}}
+        {{/each}}
+    </script>
+}
+
+<div class="row">
+    <div class="col-xs-6 col-md-4">
+        <div class="row">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default ayer"><span class="glyphicon glyphicon-arrow-left"></span></button>
+                <button type="button" class="btn btn-default hoy">Hoy</button>
+                <button type="button" class="btn btn-default manania"><span class="glyphicon glyphicon-arrow-right"></span></button>
+            </div>
+        </div>
+        <div class="row">
+            <p class="DiaActual"></p>
+            <span class="MesActual"></span>
+        </div>
+    </div>
+    <div id="ListaHoras" class="col-xs-12 col-md-8">
+        <p class="FechaActual"></p>
+        <ul class="listaHoras">
+            <li id="0000">
+                <div>
+                    <span class="hora">00:00</span>
+                </div>
+            </li>
+            <li id="0030">
+                <div>
+                    <span class="hora">
+                        00:30
+                    </span>
+                </div>
+            </li>
+            <li id="0100">
+                <div>
+                    <span class="hora">
+                        01:00
+                    </span>
+                </div>
+            </li>
+            <li id="0130">
+                <div>
+                    <span class="hora">
+                        01:30
+                    </span>
+                </div>
+            </li>
+            <li id="0200">
+                <div>
+                    <span class="hora">
+                        02:00
+                    </span>
+                </div>
+            </li>
+            <li id="0230">
+                <div>
+                    <span class="hora">
+                        02:30
+                    </span>
+                </div>
+            </li>
+            <li id="0300">
+                <div>
+                    <span class="hora">
+                        03:00
+                    </span>
+                </div>
+            </li>
+            <li id="0330">
+                <div>
+                    <span class="hora">
+                        03:30
+                    </span>
+                </div>
+            </li>
+            <li id="0400">
+                <div>
+                    <span class="hora">
+                        04:00
+                    </span>
+                </div>
+            </li>
+            <li id="0430">
+                <div>
+                    <span class="hora">
+                        04:30
+                    </span>
+                </div>
+            </li>
+            <li id="0500">
+                <div>
+                    <span class="hora">
+                        05:00
+                    </span>
+                </div>
+            </li>
+            <li id="0530">
+                <div>
+                    <span class="hora">
+                        05:30
+                    </span>
+                </div>
+            </li>
+            <li id="0600">
+                <div>
+                    <span class="hora">
+                        06:00
+                    </span>
+                </div>
+            </li>
+            <li id="0630">
+                <div>
+                    <span class="hora">
+                        06:30
+                    </span>
+                </div>
+            </li>
+            <li id="0700">
+                <div>
+                    <span class="hora">
+                        07:00
+                    </span>
+                </div>
+            </li>
+            <li id="0730">
+                <div>
+                    <span class="hora">
+                        07:30
+                    </span>
+                </div>
+            </li>
+            <li id="0800">
+                <div>
+                    <span class="hora">
+                        08:00
+                    </span>
+                </div>
+            </li>
+            <li id="0830">
+                <div>
+                    <span class="hora">
+                        08:30
+                    </span>
+                </div>
+            </li>
+            <li id="0900">
+                <div>
+                    <span class="hora">
+                        09:00
+                    </span>
+                </div>
+            </li>
+            <li id="0930">
+                <div>
+                    <span class="hora">
+                        09:30
+                    </span>
+                </div>
+            </li>
+            <li id="1000">
+                <div>
+                    <span class="hora">
+                        10:00
+                    </span>
+                </div>
+            </li>
+            <li id="1030">
+                <div>
+                    <span class="hora">
+                        10:30
+                    </span>
+                </div>
+            </li>
+            <li id="1100">
+                <div>
+                    <span class="hora">
+                        11:00
+                    </span>
+                </div>
+            </li>
+            <li id="1130">
+                <div>
+                    <span class="hora">
+                        11:30
+                    </span>
+                </div>
+            </li>
+            <li id="1200">
+                <div>
+                    <span class="hora">
+                        12:00
+                    </span>
+                </div>
+            </li>
+            <li id="1230">
+                <div>
+                    <span class="hora">
+                        12:30
+                    </span>
+                </div>
+            </li>
+            <li id="1300">
+                <div>
+                    <span class="hora">
+                        13:00
+                    </span>
+                </div>
+            </li>
+            <li id="1330">
+                <div>
+                    <span class="hora">
+                        13:30
+                    </span>
+                </div>
+            </li>
+            <li id="1400">
+                <div>
+                    <span class="hora">
+                        14:00
+                    </span>
+                </div>
+            </li>
+            <li id="1430">
+                <div>
+                    <span class="hora">
+                        14:30
+                    </span>
+                </div>
+            </li>
+            <li id="1500">
+                <div>
+                    <span class="hora">
+                        15:00
+                    </span>
+                </div>
+            </li>
+            <li id="1530">
+                <div>
+                    <span class="hora">
+                        15:30
+                    </span>
+                </div>
+            </li>
+            <li id="1600">
+                <div>
+                    <span class="hora">
+                        16:00
+                    </span>
+                </div>
+            </li>
+            <li id="1630">
+                <div>
+                    <span class="hora">
+                        16:30
+                    </span>
+                </div>
+            </li>
+            <li id="1700">
+                <div>
+                    <span class="hora">
+                        17:00
+                    </span>
+                </div>
+            </li>
+            <li id="1730">
+                <div>
+                    <span class="hora">
+                        17:30
+                    </span>
+                </div>
+            </li>
+            <li id="1800">
+                <div>
+                    <span class="hora">
+                        18:00
+                    </span>
+                </div>
+            </li>
+            <li id="1830">
+                <div>
+                    <span class="hora">
+                        18:30
+                    </span>
+                </div>
+            </li>
+            <li id="1900">
+                <div>
+                    <span class="hora">
+                        19:00
+                    </span>
+                </div>
+            </li>
+            <li id="1930">
+                <div>
+                    <span class="hora">
+                        19:30
+                    </span>
+                </div>
+            </li>
+            <li id="2000">
+                <div>
+                    <span class="hora">
+                        20:00
+                    </span>
+                </div>
+            </li>
+            <li id="2030">
+                <div>
+                    <span class="hora">
+                        20:30
+                    </span>
+                </div>
+            </li>
+            <li id="2100">
+                <div>
+                    <span class="hora">
+                        21:00
+                    </span>
+                </div>
+            </li>
+            <li id="2130">
+                <div>
+                    <span class="hora">
+                        21:30
+                    </span>
+                </div>
+            </li>
+            <li id="2200">
+                <div>
+                    <span class="hora">
+                        22:00
+                    </span>
+                </div>
+            </li>
+            <li id="2230">
+                <div>
+                    <span class="hora">
+                        22:30
+                    </span>
+                </div>
+            </li>
+            <li id="2300">
+                <div>
+                    <span class="hora">
+                        23:00
+                    </span>
+                </div>
+            </li>
+            <li id="2330">
+                <div>
+                    <span class="hora">
+                        23:30
+                    </span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</div>

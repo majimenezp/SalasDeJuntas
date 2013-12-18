@@ -9,6 +9,7 @@ using NHibernate.Tool.hbm2ddl;
 using NHibernate.Linq;
 using NHibernate.Criterion;
 using FluentNHibernate.Cfg.Db;
+using Entidades;
 
 namespace Dominio
 {
@@ -34,5 +35,7 @@ namespace Dominio
         }
 
         public static DAL Instance { get { return instance.Value; } }
+
+        
     }
 }

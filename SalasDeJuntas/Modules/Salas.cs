@@ -18,7 +18,7 @@ namespace SalasDeJuntas.Modules
             Get["/{id}"] = x =>
             {
                 var sala = DAL.Instance.ObtenerSala(x.id);
-                return View["Detalle.cshtml"];
+                return View["Detalle.cshtml",sala];
             };
         }
     }

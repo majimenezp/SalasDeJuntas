@@ -41,6 +41,20 @@ namespace Dominio
             return resultado;
         }
 
+        public Junta[] ObtenerJuntasSalaPorFecha(int idSala, DateTime fecha)
+        {
+            Junta[] resultado = new Junta[]{};
+            using (var sesion = this.currentSession.OpenSession())
+            {
+                using (var trans = sesion.BeginTransaction())
+                {
+                    resultado=sesion.Query<Junta>().Where(x => x.Fecha.Date == fecha && x.Sala.Id == idSala).ToArray();
+                    trans.Commit();
+                }
+            }
+            return resultado;
+        }
+
 
     }
 

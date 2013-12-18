@@ -20,3 +20,46 @@ body {
 a {
     color:inherit;
 }
+.DiaActual{
+    font-size:8em;
+    font-weight:bold;
+    margin:0;
+}
+.MesActual{
+    text-align:center;
+    font-size:3em;
+    font-weight:bold;
+    margin:0;
+}
+
+.FechaActual{
+    font-size:2em;
+}
+.listaHoras{
+   
+}
+.listaHoras li{
+    list-style-type:none;
+}
+    .listaHoras li > div {
+        width:300px;
+    }
+    .listaHoras li:nth-child(odd) > div{
+        border-top:2px solid gray;
+    }
+    .listaHoras li:nth-child(even) > div{
+        border-top:1px solid #eae8e8;
+    }
+    .hora {
+        
+    }
+
+.cajaJunta{
+    background-color:rgba(255, 106, 0,0.50);
+    border:1px solid red;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    width:200px;
+    position:absolute;
+    left:100px;
+}
