@@ -2,3 +2,38 @@
 @{
     Layout = "Views/Shared/Layout.cshtml";
 }
+@section Header{
+    <link href="@Url.Content("~/Content/css/datepicker.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Content/js/libs/bootstrap-datepicker.js")"></script>
+    <script type="text/javascript">
+        $('.date').datepicker({ format: "dd/mm/yyyy" });
+    </script>
+}
+
+
+
+><form role="form">
+    <div class="form-group">
+        <label for="Descripcion">Descripción de la junta</label>
+        <input type="text" class="form-control" id="Descripcion" placeholder="Descripción de la junta" value="@Model.Descripcion">
+    </div>
+    <div class="form-group">
+        <label for="Fecha">Fecha de la junta</label>
+        <input type="text" class="form-control date" id="Fecha"  placeholder="Fecha de la junta" value="@Model.Fecha">
+    </div>
+    <div class="form-group">
+        <label for="Comentario">Comentarios</label>
+        <textarea class="form-control" rows="4" id="Comentario">@Model.Comentario</textarea>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputFile">File input</label>
+        <input type="file" id="exampleInputFile">
+        <p class="help-block">Example block-level help text here.</p>
+    </div>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox"> Check me out
+        </label>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
